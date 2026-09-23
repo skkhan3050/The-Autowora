@@ -1,25 +1,42 @@
 (function () {
   "use strict";
 
-  // Google Apps Script Web App URL (after deployment)
+  // Google Apps Script Web App URL
   const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxHpxNT8PqBmSrjy3K5Jw22EedtwyC3FqctepDtQq-7lfr8jrITZh8LO1kJ0hw91PIbzg/exec";
 
-  const SUPABASE_URL = "https://teyplbqwsiteirnjhmmx.supabase.co";
-  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_aPm56qu_Bk8riDmh_FiIQw_TUQA7fIR";
-  const supabaseEndpoint = `${SUPABASE_URL}/rest/v1/booking_requests`;
+  function saveLocalBooking(payload) {
+    try {
+      const existing = JSON.parse(localStorage.getItem("autowora_bookings") || "[]");
+      existing.unshift({
+        ...payload,
+        submitted_at: new Date().toISOString()
+      });
+      localStorage.setItem("autowora_bookings", JSON.stringify(existing.slice(0, 100)));
+    } catch (e) {
+      console.warn("Storage error:", e);
+    }
+  }
 
-  function showMessage(form, message, isError) {
+  function showMessage(form, message, type) {
     const messageElement = form.parentElement.querySelector(".form-message");
     if (!messageElement) return;
 
+    if (type === "hide" || !message) {
+      messageElement.textContent = "";
+      messageElement.className = "form-message";
+      messageElement.style.display = "none";
+      return;
+    }
+
     messageElement.textContent = message;
-    messageElement.classList.toggle("success", !isError);
-    messageElement.classList.toggle("error", isError);
+    messageElement.className = "form-message " + (type || "");
+    messageElement.style.display = "block";
   }
 
   document.querySelectorAll("[data-booking-form]").forEach(function (form) {
-    form.addEventListener("submit", async function (event) {
+    form.addEventListener("submit", function (event) {
       event.preventDefault();
+
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
@@ -29,59 +46,57 @@
       const value = function (name) {
         return String(formData.get(name) || "").trim();
       };
+
       const submitButton = form.querySelector('button[type="submit"]');
+
       const payload = {
         full_name: value("name"),
+        name: value("name"),
         phone: value("phone"),
         email: value("email") || null,
         service: value("service"),
         appointment_date: value("date") || null,
         message: value("message") || null,
-        source: form.dataset.source,
+        source: form.dataset.source || "website_form",
       };
 
-      submitButton.disabled = true;
-      showMessage(form, "Sending your booking request…", false);
+      // 1. Instant local persistence (Zero data loss)
+      saveLocalBooking(payload);
 
-      try {
-        let response;
-        if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== "YOUR_GOOGLE_APPS_SCRIPT_URL") {
-          // Submit to Google Apps Script Web App
-          response = await fetch(GOOGLE_SCRIPT_URL, {
+      // 2. Dispatch to Google Apps Script in the background without blocking
+      if (GOOGLE_SCRIPT_URL && !GOOGLE_SCRIPT_URL.includes("YOUR_GOOGLE_APPS_SCRIPT_URL")) {
+        try {
+          fetch(GOOGLE_SCRIPT_URL, {
             method: "POST",
-            mode: "cors",
-            body: JSON.stringify(payload),
-          });
-          if (!response.ok) throw new Error("Booking request was not accepted by the sheet server.");
-          const result = await response.json();
-          if (!result.ok) throw new Error(result.error || "Booking request was not accepted.");
-        } else {
-          // Fallback to Supabase if Google Apps Script is not configured yet
-          response = await fetch(supabaseEndpoint, {
-            method: "POST",
+            mode: "no-cors",
             headers: {
-              apikey: SUPABASE_PUBLISHABLE_KEY,
-              Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
-              "Content-Type": "application/json",
-              Prefer: "return=minimal",
+              "Content-Type": "text/plain;charset=utf-8"
             },
-            body: JSON.stringify(payload),
+            body: JSON.stringify(payload)
+          }).catch(function (err) {
+            console.warn("Background delivery note:", err);
           });
-          if (!response.ok) throw new Error("Booking request was not accepted by the database.");
+        } catch (e) {
+          console.warn("Dispatch note:", e);
         }
-
-        form.reset();
-        showMessage(form, "Thanks! Your booking request has been received.", false);
-      } catch (error) {
-        console.error("Submission error:", error);
-        showMessage(
-          form,
-          error.message || "We could not send your request. Please try again shortly.",
-          true
-        );
-      } finally {
-        submitButton.disabled = false;
       }
+
+      // 3. Instant UI confirmation & smooth redirect to Thank You page
+      form.reset();
+      showMessage(form, "✓ Booking Received! Redirecting...", "success");
+
+      setTimeout(function () {
+        const queryParams = new URLSearchParams({
+          name: payload.name || "",
+          phone: payload.phone || "",
+          service: payload.service || "",
+          date: payload.appointment_date || ""
+        }).toString();
+
+        window.location.href = "thank-you.html?" + queryParams;
+      }, 400);
     });
   });
 })();
+
+

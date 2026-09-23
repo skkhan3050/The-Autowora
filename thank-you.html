@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Thank You | The Auto Aura - Luxury Car Detailing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Thank you for booking with The Auto Aura Kolkata. Our team will contact you shortly to confirm your appointment."
+    />
+
+    <!-- ==============================================
+         GOOGLE TAG MANAGER (GTM)
+         Replace 'GTM-XXXXXXX' with your actual GTM Container ID
+         ============================================== -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+    </script>
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-XXXXXXX');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/logo.jpg" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="assets/css/animate.min.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/responsive.css" rel="stylesheet" />
+
+    <style>
+      :root {
+        --brand-primary: #ff5722;
+        --brand-accent: #ff9800;
+        --brand-dark: #060d20;
+        --brand-darker: #040915;
+        --brand-surface: #0c1631;
+        --brand-border: rgba(255, 255, 255, 0.1);
+        --success-emerald: #10b981;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: var(--brand-darker);
+        color: #e2e8f0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Outfit', sans-serif;
+      }
+
+      /* Navbar */
+      .navbar-thankyou {
+        background: rgba(6, 13, 32, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--brand-border);
+        padding: 14px 0;
+      }
+
+      .navbar-thankyou .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .navbar-thankyou .brand-logo {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        border: 2px solid var(--brand-primary);
+        object-fit: cover;
+      }
+
+      .navbar-thankyou .brand-text {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: 0.5px;
+      }
+
+      .navbar-thankyou .btn-nav-call {
+        background: rgba(255, 87, 34, 0.15);
+        color: #ff784e;
+        border: 1px solid rgba(255, 87, 34, 0.4);
+        padding: 8px 18px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .navbar-thankyou .btn-nav-call:hover {
+        background: var(--brand-primary);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+      }
+
+      /* Thank You Main Container */
+      .thankyou-wrapper {
+        flex: 1;
+        padding: 120px 0 60px;
+        position: relative;
+      }
+
+      /* Background Ambient Glows */
+      .ambient-glow-1 {
+        position: absolute;
+        width: 450px;
+        height: 450px;
+        background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(0,0,0,0) 70%);
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .ambient-glow-2 {
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        background: radial-gradient(circle, rgba(255, 87, 34, 0.12) 0%, rgba(0,0,0,0) 70%);
+        bottom: 10%;
+        right: 15%;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .thankyou-card {
+        background: var(--brand-surface);
+        border: 1px solid var(--brand-border);
+        border-radius: 20px;
+        padding: 50px 40px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        position: relative;
+        z-index: 1;
+        text-align: center;
+      }
+
+      /* Animated Success Icon */
+      .success-icon-wrap {
+        width: 90px;
+        height: 90px;
+        margin: 0 auto 28px;
+        background: rgba(16, 185, 129, 0.12);
+        border: 2px solid var(--success-emerald);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 30px rgba(16, 185, 129, 0.35);
+        animation: pulseCheck 2s infinite ease-in-out;
+      }
+
+      @keyframes pulseCheck {
+        0%, 100% {
+          transform: scale(1);
+          box-shadow: 0 0 25px rgba(16, 185, 129, 0.35);
+        }
+        50% {
+          transform: scale(1.06);
+          box-shadow: 0 0 40px rgba(16, 185, 129, 0.55);
+        }
+      }
+
+      .success-icon-wrap i {
+        font-size: 42px;
+        color: var(--success-emerald);
+      }
+
+      .thankyou-title {
+        font-size: 2.3rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 15px;
+        letter-spacing: -0.5px;
+      }
+
+      .thankyou-title span {
+        background: linear-gradient(135deg, #10b981, #34d399);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .thankyou-desc {
+        font-size: 1.1rem;
+        color: #94a3b8;
+        max-width: 620px;
+        margin: 0 auto 35px;
+        line-height: 1.7;
+      }
+
+      /* Dynamic Booking Details Banner */
+      .booking-summary-box {
+        background: rgba(6, 13, 32, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 20px 25px;
+        margin: 0 auto 40px;
+        max-width: 600px;
+        text-align: left;
+        display: none;
+      }
+
+      .summary-header {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #64748b;
+        font-weight: 700;
+        margin-bottom: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        padding-bottom: 6px;
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 14px;
+      }
+
+      .summary-item .label {
+        font-size: 0.8rem;
+        color: #94a3b8;
+      }
+
+      .summary-item .val {
+        font-size: 0.95rem;
+        color: #ffffff;
+        font-weight: 600;
+      }
+
+      /* Next Steps */
+      .steps-section {
+        margin: 40px 0 45px;
+        text-align: left;
+      }
+
+      .steps-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 24px;
+        text-align: center;
+      }
+
+      .step-card {
+        background: rgba(6, 13, 32, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        padding: 24px 20px;
+        height: 100%;
+        transition: all 0.3s ease;
+      }
+
+      .step-card:hover {
+        border-color: rgba(255, 87, 34, 0.4);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .step-number {
+        width: 38px;
+        height: 38px;
+        background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+        color: #fff;
+        border-radius: 50%;
+        font-weight: 800;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+      }
+
+      .step-card h5 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 8px;
+      }
+
+      .step-card p {
+        font-size: 0.88rem;
+        color: #94a3b8;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* Action Buttons */
+      .action-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 30px;
+      }
+
+      .btn-primary-action {
+        background: linear-gradient(135deg, #ff5722, #ff784e);
+        color: #ffffff;
+        border: none;
+        padding: 14px 28px;
+        border-radius: 35px;
+        font-weight: 700;
+        font-size: 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(255, 87, 34, 0.35);
+      }
+
+      .btn-primary-action:hover {
+        background: linear-gradient(135deg, #f4511e, #ff5722);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 87, 34, 0.5);
+      }
+
+      .btn-whatsapp-action {
+        background: #25d366;
+        color: #ffffff;
+        border: none;
+        padding: 14px 28px;
+        border-radius: 35px;
+        font-weight: 700;
+        font-size: 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+      }
+
+      .btn-whatsapp-action:hover {
+        background: #1ebc59;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+      }
+
+      .btn-secondary-action {
+        background: rgba(255, 255, 255, 0.08);
+        color: #e2e8f0;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 14px 28px;
+        border-radius: 35px;
+        font-weight: 600;
+        font-size: 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary-action:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        transform: translateY(-2px);
+      }
+
+      /* Studio Location & Hours Box */
+      .location-info-bar {
+        background: rgba(6, 13, 32, 0.5);
+        border-top: 1px solid var(--brand-border);
+        padding: 24px 0;
+        font-size: 0.9rem;
+        color: #94a3b8;
+      }
+
+      .location-info-bar a {
+        color: var(--brand-primary);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .location-info-bar a:hover {
+        text-decoration: underline;
+      }
+
+      /* Footer */
+      .footer-thankyou {
+        background: #040915;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 20px 0;
+        text-align: center;
+        font-size: 0.85rem;
+        color: #64748b;
+      }
+
+      .footer-thankyou a {
+        color: #94a3b8;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+
+      .footer-thankyou a:hover {
+        color: var(--brand-primary);
+      }
+
+      @media (max-width: 767px) {
+        .thankyou-wrapper {
+          padding: 100px 0 40px;
+        }
+        .thankyou-card {
+          padding: 35px 20px;
+        }
+        .thankyou-title {
+          font-size: 1.8rem;
+        }
+        .action-buttons {
+          flex-direction: column;
+        }
+        .btn-primary-action, .btn-whatsapp-action, .btn-secondary-action {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Navbar -->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark navbar-thankyou fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="index.html" id="gtm-brand-link">
+            <img src="assets/img/logo.jpg?v=2" alt="The Auto Aura" class="brand-logo" />
+            <span class="brand-text">The Auto Aura</span>
+          </a>
+          <div class="ms-auto d-flex align-items-center gap-2">
+            <a
+              href="tel:+919073111167"
+              class="btn-nav-call"
+              id="gtm-nav-call"
+              data-gtm-action="call_click"
+              data-gtm-category="lead_contact"
+            >
+              <i class="fa fa-phone"></i>
+              <span>+91 90731 11167</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="thankyou-wrapper">
+      <div class="ambient-glow-1"></div>
+      <div class="ambient-glow-2"></div>
+
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-9 col-md-11">
+            <div class="thankyou-card">
+              <!-- Animated Success Checkmark -->
+              <div class="success-icon-wrap">
+                <i class="fa fa-check"></i>
+              </div>
+
+              <h1 class="thankyou-title">
+                Booking Request <span>Received!</span>
+              </h1>
+              <p class="thankyou-desc">
+                Thank you for choosing <strong>The Auto Aura</strong>. We have securely received your appointment request. Our luxury detailing manager will call or message you within <strong>15–30 minutes</strong> to confirm your slot.
+              </p>
+
+              <!-- Dynamic Booking Summary Box (Auto populated if available) -->
+              <div class="booking-summary-box" id="bookingSummaryBox">
+                <div class="summary-header">
+                  <i class="fa fa-file-text-o me-1"></i> Request Summary
+                </div>
+                <div class="summary-grid">
+                  <div class="summary-item">
+                    <div class="label">Customer Name</div>
+                    <div class="val" id="sumName">-</div>
+                  </div>
+                  <div class="summary-item">
+                    <div class="label">Phone Number</div>
+                    <div class="val" id="sumPhone">-</div>
+                  </div>
+                  <div class="summary-item">
+                    <div class="label">Selected Service</div>
+                    <div class="val" id="sumService">-</div>
+                  </div>
+                  <div class="summary-item" id="sumDateWrap">
+                    <div class="label">Preferred Date</div>
+                    <div class="val" id="sumDate">-</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Next Steps Cards -->
+              <div class="steps-section">
+                <h2 class="steps-title">What Happens Next?</h2>
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <div class="step-card">
+                      <div class="step-number">1</div>
+                      <h5>Instant Review</h5>
+                      <p>Our detailing experts review your car model and chosen package requirements.</p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="step-card">
+                      <div class="step-number">2</div>
+                      <h5>Slot Confirmation</h5>
+                      <p>We connect via Call or WhatsApp to finalize your preferred time and bay slot.</p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="step-card">
+                      <div class="step-number">3</div>
+                      <h5>VIP Service Experience</h5>
+                      <p>Bring your car in for premium ceramic coating, PPF, or deep detailing care.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action CTAs with GTM Tracking Attributes -->
+              <div class="action-buttons">
+                <a
+                  href="https://wa.me/919073111167?text=Hi%20The%20Auto%20Aura,%20I%20just%20submitted%20a%20booking%20request%20on%20your%20website."
+                  target="_blank"
+                  class="btn-whatsapp-action"
+                  id="gtm-btn-whatsapp"
+                  data-gtm-action="whatsapp_click"
+                  data-gtm-category="lead_contact"
+                >
+                  <i class="fa fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+                <a
+                  href="tel:+919073111167"
+                  class="btn-primary-action"
+                  id="gtm-btn-call"
+                  data-gtm-action="call_click"
+                  data-gtm-category="lead_contact"
+                >
+                  <i class="fa fa-phone"></i> Call Studio Directly
+                </a>
+                <a
+                  href="index.html"
+                  class="btn-secondary-action"
+                  id="gtm-btn-home"
+                  data-gtm-action="return_home_click"
+                >
+                  <i class="fa fa-arrow-left"></i> Back to Home
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Studio Information Bar -->
+    <section class="location-info-bar">
+      <div class="container">
+        <div class="row align-items-center text-center text-md-start">
+          <div class="col-md-6 mb-2 mb-md-0">
+            <i class="fa fa-map-marker text-danger me-2"></i>
+            <strong>Studio:</strong> 325, West Chowbaga Road, Ground Floor, Kolkata – 700100
+          </div>
+          <div class="col-md-6 text-md-end">
+            <i class="fa fa-clock-o text-warning me-2"></i>
+            <strong>Working Hours:</strong> Mon – Sun (9:00 AM – 8:00 PM)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-thankyou">
+      <div class="container">
+        <p class="mb-1">
+          &copy; <span id="currentYear"></span> The Auto Aura. All Rights Reserved.
+        </p>
+        <div>
+          <a href="privacy-policy.html">Privacy Policy</a> |
+          <a href="terms-of-service.html">Terms of Service</a> |
+          <a href="index.html#services">Our Services</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Populate current year in footer
+      document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+      // Read lead information from localStorage or URL parameters
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        let name = urlParams.get("name") || "";
+        let phone = urlParams.get("phone") || "";
+        let service = urlParams.get("service") || "";
+        let date = urlParams.get("date") || "";
+
+        if (!name || !phone) {
+          const bookings = JSON.parse(localStorage.getItem("autowora_bookings") || "[]");
+          if (bookings && bookings.length > 0) {
+            const latest = bookings[0];
+            name = latest.full_name || latest.name || "";
+            phone = latest.phone || "";
+            service = latest.service || "";
+            date = latest.appointment_date || "";
+          }
+        }
+
+        if (name || phone || service) {
+          if (name) document.getElementById("sumName").textContent = name;
+          if (phone) document.getElementById("sumPhone").textContent = phone;
+          if (service) document.getElementById("sumService").textContent = service;
+          if (date) {
+            document.getElementById("sumDate").textContent = date;
+          } else {
+            const dateWrap = document.getElementById("sumDateWrap");
+            if (dateWrap) dateWrap.style.display = "none";
+          }
+          document.getElementById("bookingSummaryBox").style.display = "block";
+        }
+
+        // ==============================================
+        // AUTOMATIC GTM DATALAYER CONVERSION EVENT PUSH
+        // ==============================================
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'generate_lead',
+          page_type: 'thank_you_page',
+          conversion_category: 'lead_generation',
+          lead_service: service || 'General Detailing',
+          lead_date: date || 'Not specified',
+          event_timestamp: new Date().toISOString()
+        });
+      } catch (e) {
+        console.warn("Could not load booking summary or push dataLayer", e);
+      }
+
+      // Add click event listeners for GTM micro-conversions
+      document.querySelectorAll('[data-gtm-action]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'custom_click',
+            click_action: this.getAttribute('data-gtm-action'),
+            click_category: this.getAttribute('data-gtm-category') || 'general',
+            click_id: this.id || ''
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
